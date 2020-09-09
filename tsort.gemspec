@@ -3,11 +3,11 @@ require_relative 'lib/tsort/version'
 Gem::Specification.new do |spec|
   spec.name          = "tsort"
   spec.version       = Tsort::VERSION
-  spec.authors       = ["Hiroshi SHIBATA"]
-  spec.email         = ["hsbt@ruby-lang.org"]
+  spec.authors       = ["Tanaka Akira"]
+  spec.email         = ["akr@fsij.org"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Topological sorting using Tarjan's algorithm}
+  spec.description   = %q{Topological sorting using Tarjan's algorithm}
   spec.homepage      = "https://github.com/ruby/tsort"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
   spec.licenses      = ["Ruby", "BSD-2-Clause"]
