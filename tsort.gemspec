@@ -1,8 +1,6 @@
-require_relative 'lib/tsort/version'
-
 Gem::Specification.new do |spec|
   spec.name          = "tsort"
-  spec.version       = Tsort::VERSION
+  spec.version       = "0.1.0"
   spec.authors       = ["Tanaka Akira"]
   spec.email         = ["akr@fsij.org"]
 
