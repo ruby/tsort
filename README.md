@@ -7,10 +7,10 @@ TSort is designed to be able to be used with any object which can be
 interpreted as a directed graph.
 
 TSort requires two methods to interpret an object as a graph,
-tsort_each_node and tsort_each_child.
+`tsort_each_node` and `tsort_each_child`.
 
-* tsort_each_node is used to iterate for all nodes over a graph.
-* tsort_each_child is used to iterate for child nodes of a given node.
+* `tsort_each_node` is used to iterate for all nodes over a graph.
+* `tsort_each_child` is used to iterate for child nodes of a given node.
 
 The equality of nodes are defined by eql? and hash since
 TSort uses Hash internally.
@@ -36,9 +36,9 @@ Or install it yourself as:
 The following example demonstrates how to mix the TSort module into an
 existing class (in this case, Hash). Here, we're treating each key in
 the hash as a node in the graph, and so we simply alias the required
-#tsort_each_node method to Hash's #each_key method. For each key in the
+`#tsort_each_node` method to Hash's `#each_key` method. For each key in the
 hash, the associated value is an array of the node's child nodes. This
-choice in turn leads to our implementation of the required #tsort_each_child
+choice in turn leads to our implementation of the required `#tsort_each_child`
 method, which fetches the array of child nodes and then iterates over that
 array using the user-supplied block.
 
@@ -69,4 +69,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ruby/tsort.
-
