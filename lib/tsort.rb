@@ -385,7 +385,7 @@ module TSort
   #   #=> [4]
   #   #   [2, 3]
   #
-  def each_strongly_connected_component_from(node, id_map={}, stack=[], &block) # :yields: nodes
+  def each_strongly_connected_component_from(node, id_map=nil, stack=nil, &block) # :yields: nodes
     TSort.each_strongly_connected_component_from(node, method(:tsort_each_child), id_map, stack, &block)
   end
 
@@ -410,8 +410,11 @@ module TSort
   #   #   [2, 3]
   #   #   [1]
   #
-  def self.each_strongly_connected_component_from(node, each_child, id_map={}, stack=[]) # :yields: nodes
+  def self.each_strongly_connected_component_from(node, each_child, id_map=nil, stack=nil) # :yields: nodes
     return to_enum(__method__, node, each_child, id_map, stack) unless block_given?
+
+    id_map ||= {}
+    stack ||= []
 
     minimum_id = node_id = id_map[node] = id_map.size
     stack_length = stack.length
