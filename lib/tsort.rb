@@ -344,16 +344,14 @@ module TSort
   #   #   [2, 3]
   #   #   [1]
   #
-  def self.each_strongly_connected_component(each_node, each_child) # :yields: nodes
+  def self.each_strongly_connected_component(each_node, each_child, &block) # :yields: nodes
     return to_enum(__method__, each_node, each_child) unless block_given?
 
     id_map = {}
     stack = []
     each_node.call {|node|
       unless id_map.include? node
-        each_strongly_connected_component_from(node, each_child, id_map, stack) {|c|
-          yield c
-        }
+        each_strongly_connected_component_from(node, each_child, id_map, stack, &block)
       end
     }
     nil
@@ -410,7 +408,7 @@ module TSort
   #   #   [2, 3]
   #   #   [1]
   #
-  def self.each_strongly_connected_component_from(node, each_child, id_map={}, stack=[]) # :yields: nodes
+  def self.each_strongly_connected_component_from(node, each_child, id_map={}, stack=[], &block) # :yields: nodes
     return to_enum(__method__, node, each_child, id_map, stack) unless block_given?
 
     minimum_id = node_id = id_map[node] = id_map.size
@@ -423,9 +421,7 @@ module TSort
         minimum_id = child_id if child_id && child_id < minimum_id
       else
         sub_minimum_id =
-          each_strongly_connected_component_from(child, each_child, id_map, stack) {|c|
-            yield c
-          }
+          each_strongly_connected_component_from(child, each_child, id_map, stack, &block)
         minimum_id = sub_minimum_id if sub_minimum_id < minimum_id
       end
     }
